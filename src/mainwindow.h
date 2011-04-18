@@ -32,6 +32,7 @@ private slots:
     void fullscreenToggled(bool isActivated);
     void exitFullscreen();
     void aboutQt();
+    void toggleBlackFullscreen();
 
 private:
     void loadSettings();

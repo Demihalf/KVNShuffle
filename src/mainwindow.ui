@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1,0">
+     <layout class="QHBoxLayout" name="ltHeader" stretch="0,1,0">
       <item>
        <widget class="QLabel" name="lblPictureTopLeft">
         <property name="text">
@@ -25,22 +25,18 @@
        </widget>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="lblTitle">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Центральная лига «Старт»
+       <widget class="QLabel" name="lblTitle">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Центральная лига «Старт»
 г. Воронеж</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="lblPictureTopRight">
@@ -66,7 +62,7 @@
      <x>0</x>
      <y>0</y>
      <width>512</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

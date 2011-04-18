@@ -21,8 +21,10 @@ void DisplayWidget::showPixmap(const QString &path)
     clear();
     QPixmap pic(path);
     qDebug() << path;
-    pic = pic.scaled(this->size() - QSize(100, 100), Qt::KeepAspectRatio,
+    pic = pic.scaled(qobject_cast<QWidget*>(parent())->size(), Qt::KeepAspectRatio,
                      Qt::SmoothTransformation);
+
+    m_label->resize(this->size());
 
     m_label->setPixmap(pic);
 }

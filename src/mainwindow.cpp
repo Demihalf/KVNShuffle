@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QImageReader>
 #include <QCloseEvent>
+#include <QTextCodec>
 
 #include "buttonstablewidget.h"
 #include "displaywidget.h"
@@ -109,6 +110,7 @@ void MainWindow::backToButtons()
 {
     wgtDisplay->clear();
     ui->stack->setCurrentIndex(0);
+    toggleBlackFullscreen();
 }
 
 void MainWindow::showResource(int index)
@@ -117,6 +119,8 @@ void MainWindow::showResource(int index)
 
     QString resource;
     resource = m_resources.at(index).second;
+
+    toggleBlackFullscreen();
 
     if (m_resources.at(index).first == RES_PICTURE) {
         wgtDisplay->showPixmap(resource);
@@ -149,7 +153,11 @@ void MainWindow::loadResources()
     foreach (QString path, txts) {
         QFile f(resDir.absoluteFilePath(path));
         f.open(QIODevice::ReadOnly | QIODevice::Text);
-        m_resources.append(qMakePair(RES_TEXT, QString(f.readAll())));
+
+        QTextStream stream(&f);
+        stream.setCodec(QTextCodec::codecForLocale());
+
+        m_resources.append(qMakePair(RES_TEXT, QString(stream.readAll())));
     }
 
     m_resources = shuffled(m_resources);
@@ -165,6 +173,21 @@ void MainWindow::fullscreenToggled(bool isActivated)
         if (m_wasMaximized) {
             showMaximized();
         }
+    }
+}
+
+void MainWindow::toggleBlackFullscreen()
+{
+    if (ui->stack->currentIndex() == 1) {
+        ui->menuBar->hide();
+        ui->lblPictureTopLeft->hide();
+        ui->lblPictureTopRight->hide();
+        ui->lblTitle->hide();
+    } else {
+        ui->menuBar->show();
+        ui->lblPictureTopLeft->show();
+        ui->lblPictureTopRight->show();
+        ui->lblTitle->show();
     }
 }
 
