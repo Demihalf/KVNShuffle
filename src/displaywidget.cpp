@@ -20,11 +20,8 @@ void DisplayWidget::showPixmap(const QString &path)
 {
     clear();
     QPixmap pic(path);
-    qDebug() << path;
-    pic = pic.scaled(qobject_cast<QWidget*>(parent())->size(), Qt::KeepAspectRatio,
+    pic = pic.scaled(size(), Qt::KeepAspectRatio,
                      Qt::SmoothTransformation);
-
-    m_label->resize(this->size());
 
     m_label->setPixmap(pic);
 }
@@ -50,7 +47,7 @@ void DisplayWidget::createInterface()
     btnLt->addWidget(btnBack);
 
     QVBoxLayout *mainLt = new QVBoxLayout;
-    mainLt->addWidget(m_label);
+    mainLt->addWidget(m_label, 1);
     mainLt->addLayout(btnLt);
 
     setLayout(mainLt);
