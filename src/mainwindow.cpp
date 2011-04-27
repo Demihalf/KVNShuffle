@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <ctime>
+
 #include <QDir>
 #include <QDebug>
-#include <ctime>
 #include <QFile>
 #include <QByteArray>
 #include <QSettings>
@@ -15,8 +16,7 @@
 #include "buttonstablewidget.h"
 #include "displaywidget.h"
 #include "settingsdialog.h"
-
-const QString MainWindow::iniFile = "settings.ini";
+#include "utilities.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,10 +25,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowFlags(Qt::Window);
-    loadSettings();
 
-    QSettings sets(iniFile, QSettings::IniFormat);
-    m_resDir = sets.value("resDir").toString();
+    m_iniFile = qApp->property("iniFile").toString();
+
+    loadSettings();
 
     qsrand(time(0));
     loadResources();
@@ -63,13 +63,14 @@ void MainWindow::aboutQt()
 
 void MainWindow::loadSettings()
 {
-    QSettings sets(iniFile, QSettings::IniFormat);
+    QSettings sets(m_iniFile, QSettings::IniFormat);
     ui->lblTitle->setText(sets.value("title_text").toString());
+    m_resDir = sets.value("resDir").toString();
 }
 
 void MainWindow::settings()
 {
-    SettingsDialog *dlg = new SettingsDialog(iniFile, this);
+    SettingsDialog *dlg = new SettingsDialog(this);
 
     if (dlg->exec()) {
         loadSettings();
@@ -86,7 +87,7 @@ void MainWindow::about()
 
                        "<p>Copyright © 2011 Валерий Харитонов</p>"
 
-                       "<p>Это программа распространяется БЕЗ ВСЯКИХ ГАРАНТИЙ. "
+                       "<p>Эта программа распространяется БЕЗ ВСЯКИХ ГАРАНТИЙ. "
                        "Это свободное программное обеспечение, и Вы можете "
                        "распространять её в соответствии с конкретными условиями. "
                        "Для дополнительной информации смотрите "
@@ -160,7 +161,7 @@ void MainWindow::loadResources()
         m_resources.append(qMakePair(RES_TEXT, QString(stream.readAll())));
     }
 
-    m_resources = shuffled(m_resources);
+    m_resources = Utility::shuffled(m_resources);
 }
 
 void MainWindow::fullscreenToggled(bool isActivated)

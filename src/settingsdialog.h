@@ -12,7 +12,7 @@ class SettingsDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SettingsDialog(const QString &fileName, QWidget *parent = 0);
+    explicit SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
 
 private slots:
@@ -20,7 +20,7 @@ private slots:
 
 private:
     Ui::SettingsDialog *ui;
-    QString m_filename;
+    QString m_iniFile;
 };
 
 #endif // SETTINGSDIALOG_H

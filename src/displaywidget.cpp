@@ -4,6 +4,8 @@
 #include <QPushButton>
 #include <QLayout>
 #include <QDebug>
+#include <QSettings>
+#include <QCoreApplication>
 
 DisplayWidget::DisplayWidget(QWidget *parent) :
     QWidget(parent)
@@ -19,8 +21,14 @@ void DisplayWidget::clear()
 void DisplayWidget::showPixmap(const QString &path)
 {
     clear();
+
+    QString iniFile = qApp->property("iniFile").toString();
+
+    QSettings sets(iniFile, QSettings::IniFormat);
+    double factor = sets.value("pic_size", 100).toDouble() / 100;
+
     QPixmap pic(path);
-    pic = pic.scaled(size(), Qt::KeepAspectRatio,
+    pic = pic.scaled(parentWidget()->size() * factor, Qt::KeepAspectRatio,
                      Qt::SmoothTransformation);
 
     m_label->setPixmap(pic);

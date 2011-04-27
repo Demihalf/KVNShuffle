@@ -21,7 +21,8 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     buttonstablewidget.h \
     displaywidget.h \
-    settingsdialog.h
+    settingsdialog.h \
+    utilities.h
 
 FORMS    += mainwindow.ui \
     settingsdialog.ui
