@@ -21,12 +21,12 @@
 ******************************************************************************/
 
 #include <QApplication>
-#include <QTextCodec>
-#include <QFile>
 #include <QDebug>
-#include <QLibraryInfo>
-#include <QTranslator>
+#include <QFile>
 #include <QIcon>
+#include <QLibraryInfo>
+#include <QTextCodec>
+#include <QTranslator>
 #include <QVariant>
 
 #include "mainwindow.h"
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName("Валерий Харитонов");
     QCoreApplication::setApplicationName("KVNShuffle");
-    QCoreApplication::setApplicationVersion("0.1");
+    QCoreApplication::setApplicationVersion("0.2");
 
     a.setProperty("iniFile", QVariant("settings.ini"));
 

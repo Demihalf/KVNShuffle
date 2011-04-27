@@ -20,20 +20,20 @@
 **
 ******************************************************************************/
 
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-
 #include <ctime>
 
-#include <QDir>
-#include <QDebug>
-#include <QFile>
 #include <QByteArray>
-#include <QSettings>
-#include <QMessageBox>
-#include <QImageReader>
 #include <QCloseEvent>
+#include <QDebug>
+#include <QDir>
+#include <QFile>
+#include <QImageReader>
+#include <QMessageBox>
+#include <QSettings>
 #include <QTextCodec>
+
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 #include "buttonstablewidget.h"
 #include "displaywidget.h"

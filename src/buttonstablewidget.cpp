@@ -20,14 +20,14 @@
 **
 ******************************************************************************/
 
-#include "buttonstablewidget.h"
+#include <cmath>
 
 #include <QButtonGroup>
 #include <QGridLayout>
 #include <QPushButton>
-#include <cmath>
-#include <QDebug>
 #include <QVariant>
+
+#include "buttonstablewidget.h"
 
 ButtonsTableWidget::ButtonsTableWidget(int numOfButtons, QWidget *parent) :
     QWidget(parent)
@@ -70,8 +70,6 @@ void ButtonsTableWidget::setButtonsCount(int count)
 
     int width = int(ceil(sqrt(double(count))));
     int height = ceil(double(count) / width);
-
-    qDebug() << height << width;
 
     Q_ASSERT(height * width >= count);
 

@@ -20,9 +20,10 @@
 **
 ******************************************************************************/
 
+#include <QSettings>
+
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
-#include <QSettings>
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
     QDialog(parent),

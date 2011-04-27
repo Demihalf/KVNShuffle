@@ -20,14 +20,14 @@
 **
 ******************************************************************************/
 
-#include "displaywidget.h"
-
-#include <QLabel>
-#include <QPushButton>
-#include <QLayout>
-#include <QDebug>
-#include <QSettings>
 #include <QCoreApplication>
+#include <QDebug>
+#include <QLabel>
+#include <QLayout>
+#include <QPushButton>
+#include <QSettings>
+
+#include "displaywidget.h"
 
 DisplayWidget::DisplayWidget(QWidget *parent) :
     QWidget(parent)

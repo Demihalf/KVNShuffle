@@ -38,7 +38,7 @@ QList<T> shuffled(QList<T> list)
     return list;
 }
 
-} // Utility
+} // namespace Utility
 
 
 #endif // UTILITIES_H
