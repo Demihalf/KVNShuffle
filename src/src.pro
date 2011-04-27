@@ -35,3 +35,6 @@ RCC_DIR = ../tmp
 
 RESOURCES += \
     resources.qrc
+
+OTHER_FILES += \
+    about_string.txt

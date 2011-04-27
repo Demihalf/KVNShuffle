@@ -103,18 +103,15 @@ void MainWindow::settings()
 
 void MainWindow::about()
 {
-    QMessageBox::about(this, "О программе", "<p>По всем вопросам, "
-                       "касающимся этой программы вы можете обращаться по email "
-                       "<a href=\"mailto:kharvd@gmail.com\">kharvd@gmail.com</a></p>"
+    QFile f(":/about_string.txt");
+    f.open(QIODevice::ReadOnly | QIODevice::Text);
 
-                       "<p>Copyright © 2011 Валерий Харитонов</p>"
+    QTextStream stream(&f);
 
-                       "<p>Эта программа распространяется БЕЗ ВСЯКИХ ГАРАНТИЙ. "
-                       "Это свободное программное обеспечение, и Вы можете "
-                       "распространять её в соответствии с конкретными условиями. "
-                       "Для дополнительной информации смотрите "
-                       "<a href=\"http://www.gnu.org/licenses/gpl.html\">"
-                       "http://www.gnu.org/licenses/gpl.html</a></p>");
+    QString about = stream.readAll().arg(qApp->applicationName())
+            .arg(qApp->applicationVersion()).replace("\n", "");
+
+    QMessageBox::about(this, "О программе", about);
 }
 
 void MainWindow::startOver()
